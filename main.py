@@ -3,13 +3,11 @@ from  flask import Flask, render_template
 #flask instance
 app = Flask(__name__)
 
-@app.route('/')
-def hello():
-    return 'hello klay thompson'
 
-@app.route('/home')
+
+@app.route('/')
 def home():
-    return 'hello brian'
+    return render_template('index.html')
 
 @app.route('/products')
 def products():
@@ -23,4 +21,4 @@ def dashboard():
 def sales():
     return render_template('sales.html')
 
-app.run()
+app.run(debug=True)
