@@ -3,7 +3,7 @@ import psycopg2
 
 #connecting to postgressql database
 conn = psycopg2.connect(
-    dbname = 'my_duka',
+    dbname = 'MyDuka',
     user = 'postgres',
     password = '6979',
     host = 'localhost',
@@ -21,7 +21,7 @@ def get_data(table):
     #     print(i)
     return data
 data = get_data('products')
-print(data)
+# print(data)
 
    
 def insert_products(values):
@@ -54,9 +54,9 @@ get_data("sales")
      
     #meth 2
 def insert_sales(val):
-    insert = "insert into sales(pid,quantity,created_at)values(%s,%s,%s)"
+    insert = "insert into sales(pid,quantity,created_at)values(%s,%s,now())"
     cur.execute(insert,val)
     conn.commit()
-sal = (1,33,"now()")
+# sal = (1,33,"now()")
 # insert_sales(sal)
-get_data("sales")
+# get_data("sales")

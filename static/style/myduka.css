@@ -1,0 +1,14 @@
+.carousel-item{
+    /* height: 50%; */
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.flash{
+    font-weight: bolder;
+}
+
+
+
