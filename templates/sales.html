@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>MyDuka</title>
     <link rel="stylesheet" href="/static/style/myduka.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
@@ -65,6 +65,19 @@
         MAKE SALE
     </button>
 
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul class=flashes>
+        {% for message in messages %}
+        <li class="alert alert-success" role="alert" style="width: 20%; height: 10px; align-content: center; margin-left: 30%;">{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+
+
+
+
     <!-- Modal -->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -88,7 +101,8 @@
                         <div class="col-md-6">
                             <input type="number" class="form-control" placeholder="Quantity" name="quantity">
                         </div>
-                        <button type="submit" class="btn btn-primary" style="width: 30%; margin-left: 30%;">Complete Sale</button>
+                        <button type="submit" class="btn btn-primary" style="width: 30%; margin-left: 30%;">Complete
+                            Sale</button>
                     </form>
                 </div>
                 <div class="modal-footer">

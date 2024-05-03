@@ -40,6 +40,7 @@ def add_prods():
     new = (p_name,b_price,s_price,s_quantity)
     insert_products(new)
     flash(f'{s_quantity} {p_name} added successfully')
+
     return redirect(url_for('products'))
 
 
@@ -51,6 +52,7 @@ def make_sale():
 
     new_sale = (pid,quantity)
     insert_sales(new_sale)
+    flash('Sale made successfully')
     return redirect(url_for('sales'))
 
 

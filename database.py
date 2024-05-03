@@ -60,3 +60,19 @@ def insert_sales(val):
 # sal = (1,33,"now()")
 # insert_sales(sal)
 # get_data("sales")
+    
+def profit_per_product():
+    profit = 'Select name,SUM((selling_price-buying_price) * stock_quantity)as profit  from sales join products on sales.pid=products.id GROUP BY name;'
+    cur.execute(profit)
+    data = cur.fetchall()
+    return data
+prof = profit_per_product()
+# print(prof)
+
+def profit_per_day():
+    per_day = 'select DATE(created_at) as days,sum((selling_price-buying_price)*(quantity)) as profit from products join sales on sales.pid=products.id group by days;'
+    cur.execute(per_day)
+    data = cur.fetchall()
+    return data
+per_d = profit_per_day()
+print(per_d)
