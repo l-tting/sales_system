@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MyDuka</title>
+    <title>MYDASH</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    
+
 </head>
 
 <body>
@@ -56,6 +56,9 @@
         </nav>
 
         <canvas id="bar-chart" width="80" height="40"></canvas>
+        <canvas id="line-chart" width="800" height="450"></canvas>
+
+
 
 
 
@@ -66,30 +69,62 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <script>
         new Chart(document.getElementById("bar-chart"), {
-    type: 'bar',
-    data: {
-      labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
-      datasets: [
-        {
-          label: "Population (millions)",
-          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-          data: [2478,5267,734,784,433]
-        }
-      ]
+            type: 'bar',
+            data: {
+                labels: {{ name | safe}},
+            datasets: [
+            {
+                label: "Profit (KSH.)",
+                backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
+                data: {{ profit | safe}}
+            },
+            {
+                label: "Sales (KSH.)",
+                backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
+                data: {{ pro_sales | safe}}
+            }
+        ]
     },
-    options: {
-      legend: { display: false },
-      title: {
-        display: true,
-        text: 'Predicted world population (millions) in 2050'
-      }
-    }
+            options: {
+            legend: { display: false },
+            title: {
+                display: true,
+                text: 'PROFIT PER PRODUCT'
+            }
+        }
 });
+        new Chart(document.getElementById("line-chart"), {
+            type: 'line',
+            data: {
+                labels: {{ day | safe}},
+            datasets: [{
+                data: {{ d_profit | safe}},
+            label: "Profit",
+            borderColor: "#3e95cd",
+            fill: false
+                },
+                {
+                data: {{ sales_prod | safe}},
+            label: "Sales",
+            borderColor: "#3e95cd",
+            fill: false
+                },
+
+        ]
+            },
+            options: {
+            title: {
+                display: true,
+                text: 'PROFIT PER DAY(KSH.)'
+            }
+        }
+        });
+
 
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"></script>
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

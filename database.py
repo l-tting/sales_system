@@ -75,4 +75,20 @@ def profit_per_day():
     data = cur.fetchall()
     return data
 per_d = profit_per_day()
-print(per_d)
+# print(per_d)
+
+def sales_per_prod():
+    sale = 'select name,sum(selling_price*quantity) as p_sales from sales join products on sales.pid = products.id group by name;'
+    cur.execute(sale)
+    data = cur.fetchall()
+    return data
+s_prod = sales_per_prod()
+# print(s_prod)
+
+def sales_per_day():
+    sale = 'select DATE(created_at) as day,sum(selling_price*quantity) as d_sales from sales join products on sales.pid=products.id group by day;'
+    cur.execute(sale)
+    data = cur.fetchall()
+    return data
+s_day = sales_per_day()
+print(s_day)
