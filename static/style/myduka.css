@@ -9,6 +9,9 @@
 .flash{
     font-weight: bolder;
 }
-
+.form-control{
+    background-color: brown;
+    width: 50%;
+}
 
 

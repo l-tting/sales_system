@@ -70,7 +70,7 @@ prof = profit_per_product()
 # print(prof)
 
 def profit_per_day():
-    per_day = 'select DATE(created_at) as days,sum((selling_price-buying_price)*(quantity)) as profit from products join sales on sales.pid=products.id group by days;'
+    per_day = 'select DATE(created_at) as days,sum((selling_price-buying_price)*(quantity)) as profit from products join sales on sales.pid=products.id group by days order by days;'
     cur.execute(per_day)
     data = cur.fetchall()
     return data
@@ -92,3 +92,9 @@ def sales_per_day():
     return data
 s_day = sales_per_day()
 print(s_day)
+
+
+def insert_user(values):
+    query = 'insert into users(full_name,email,password)values(%s,%s,%s)'
+    cur.execute(query,values)
+    conn.commit()

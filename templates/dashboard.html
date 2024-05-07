@@ -49,7 +49,19 @@
                                 Dashboard
                             </a>
                         </li>
+                        <li class="nav-item" style="margin-left:80px;">
+                            <a class="nav-link" href="/login" style="font-weight: bolder; color: black;">
+                                <i class="fa-solid fa-right-to-bracket"></i>
 
+                                Login
+                            </a>
+                        </li>
+                        <li class="nav-item" style="margin-left:80px;">
+                            <a class="nav-link" href="/register" style="font-weight: bolder; color: black;">
+                                <i class="fa-solid fa-pen"></i>
+                                Register
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -93,6 +105,7 @@
             }
         }
 });
+
         new Chart(document.getElementById("line-chart"), {
             type: 'line',
             data: {
@@ -100,10 +113,10 @@
             datasets: [{
                 data: {{ d_profit | safe}},
             label: "Profit",
-            borderColor: "#3e95cd",
+            borderColor: "#FF0000",
             fill: false
                 },
-                {
+            {
                 data: {{ sales_prod | safe}},
             label: "Sales",
             borderColor: "#3e95cd",

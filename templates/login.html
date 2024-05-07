@@ -4,8 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SALES</title>
-    <link rel="stylesheet" href="/static/style/myduka.css">
+    <title>LOGIN</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -13,8 +12,8 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 
-<body>
-    <div class="container-fluid">
+<body style="background-color: cadetblue;">
+    <div>
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid" style="background-color:bisque;border-radius: 20px;">
                 <a class="navbar-brand" href="/" style="font-weight: bolder; color: cadetblue;">MyDuka</a>
@@ -52,7 +51,7 @@
                         <li class="nav-item" style="margin-left:80px;">
                             <a class="nav-link" href="/login" style="font-weight: bolder; color: black;">
                                 <i class="fa-solid fa-right-to-bracket"></i>
-                              Login
+                                Login
                             </a>
                         </li>
                         <li class="nav-item" style="margin-left:80px;">
@@ -66,85 +65,45 @@
             </div>
         </nav>
 
+        <h2>Login into MyDuka Account</h2>
+        <div class="card text-center" style="width: 33%; margin-left: 25%;margin-top: 10%;">
+            <div class="card-header"
+                style="font-size: larger;color: cadetblue; font-weight: bolder;background-color: bisque;font-family: 'Times New Roman', Times, serif;">
+                MyDuka
+            </div>
+            <div class="card-body"
+                style="background-color:lightgray; background-image: url(/static/images/log.jpeg); background-repeat: no-repeat; background-size: cover;">
 
+                <p class="card-text" style="font-weight: bolder;">Enter your email and password below: </p>
+                <form action="">
 
-    </div>
-    <h1>My Sales</h1>
+                    <input type="text" placeholder="Enter email"
+                        style="width: 230px; border-radius: 10px;border-color: bisque;" required><br><br>
+                    <input type="password" placeholder="Enter password"
+                        style="width: 230px; border-radius: 10px;border-color: bisque;" required><br><br>
 
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-        MAKE SALE
-    </button>
+                    <button type="submit"
+                        style="background-color: lightblue; border-radius: 7px; width: 115px;">Login</button>
+                </form>
 
-    {% with messages = get_flashed_messages() %}
-    {% if messages %}
-    <ul class=flashes>
-        {% for message in messages %}
-        <li class="alert alert-success" role="alert" style="width: 20%; height: 10px; align-content: center; margin-left: 30%;">{{ message }}</li>
-        {% endfor %}
-    </ul>
-    {% endif %}
-    {% endwith %}
-
-
-
-
-    <!-- Modal -->
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Make a Sale</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form class="row g-3" action="/make_sale" method="POST">
-                        <div class="col-md-6">
-                            <select class="form-select" aria-label="Default select example" name="select">
-                                <option> Select Product </option>
-                                {% for i in products %}
-                                <option value={{i[0]}}>{{i[1]}}</option>
-                                {% endfor %}
-
-                            </select>
-                        </div>
-                        <div class="col-md-6">
-                            <input type="number" class="form-control" placeholder="Quantity" name="quantity">
-                        </div>
-                        <button type="submit" class="btn btn-primary" style="width: 30%; margin-left: 30%;">Complete
-                            Sale</button>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
+            </div>
+            <div class="card-footer text-body-secondary" style="background-color: bisque;">
+                Dont have an account? <a href="{{url_for('register')}}">Sign up</a>
             </div>
         </div>
-    </div>
-    <div>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">PID</th>
-                    <th scope="col">Quantity</th>
-                    <th scope="col">Sale Made At:</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for i in sales%}
-                <tr>
-                    <td>{{i[0]}}</td>
-                    <td>{{i[1]}}</td>
-                    <td>{{i[2]}}</td>
-                    <td>{{i[3]}}</td>
-                </tr>
 
-                {% endfor %}
-            </tbody>
-        </table>
     </div>
+
+
+
+
+
+
+
+
+
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
