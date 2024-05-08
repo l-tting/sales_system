@@ -40,6 +40,7 @@ def insert_products(values):
 product_val = ("meat",20,30,100)
 insert_products(product_val)
 get_data("products")
+
 get_data("sales")
 
 # create a function to insert sales in 2 ways
@@ -91,10 +92,44 @@ def sales_per_day():
     data = cur.fetchall()
     return data
 s_day = sales_per_day()
-print(s_day)
+# print(s_day)
 
 
 def insert_user(values):
     query = 'insert into users(full_name,email,password)values(%s,%s,%s)'
     cur.execute(query,values)
     conn.commit()
+
+def check_email(email):
+    query = 'select * from users where email = %s'
+    cur.execute(query,(email,))
+    data = cur.fetchone()
+    return data
+
+def get_name(nm):
+    name = 'select * from products where name=%s '
+    cur.execute(name,(nm,))
+    data = cur.fetchall()
+    return data
+# x = get_name()
+# print(x)
+
+def update_prod(name):
+    query = f'update products set name=%s, buying_price= %s, selling_price=%s , stock_quantity=%s where name = {name}'
+    cur.execute(query)
+    conn.commit()
+
+def check_email_exist(email):
+    query = 'select * from users where email = %s'
+    cur.execute(query,(email,))
+    data = cur.fetchall()
+    return data
+
+# ch=check_email_exist("ropu")
+# print(ch)
+
+def check_email_pass(email,password):
+    query = 'select * from users where email=%s and password=%s'
+    cur.execute(query,(email,password))
+    data = cur.fetchall()
+    return data 

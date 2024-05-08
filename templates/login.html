@@ -71,15 +71,27 @@
                 style="font-size: larger;color: cadetblue; font-weight: bolder;background-color: bisque;font-family: 'Times New Roman', Times, serif;">
                 MyDuka
             </div>
+
+
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <ul class=flashes>
+                {% for message in messages %}
+                <li class="flash" style="font-weight: bolder; color:red;">{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            {% endwith %}
+            {% block body %}{% endblock %}
             <div class="card-body"
                 style="background-color:lightgray; background-image: url(/static/images/log.jpeg); background-repeat: no-repeat; background-size: cover;">
 
                 <p class="card-text" style="font-weight: bolder;">Enter your email and password below: </p>
-                <form action="">
+                <form action="/login" method="post">
 
-                    <input type="text" placeholder="Enter email"
+                    <input name="mail" type="text" placeholder="Enter email"
                         style="width: 230px; border-radius: 10px;border-color: bisque;" required><br><br>
-                    <input type="password" placeholder="Enter password"
+                    <input name="pass" type="password" placeholder="Enter password"
                         style="width: 230px; border-radius: 10px;border-color: bisque;" required><br><br>
 
                     <button type="submit"
